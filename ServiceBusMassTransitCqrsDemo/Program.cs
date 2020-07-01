@@ -6,15 +6,20 @@ using Autofac;
 
 using CSharpFunctionalExtensions;
 
+using FluentValidation.Results;
+
 using MassTransit;
 
 using MediatR;
+
+using Microsoft.EntityFrameworkCore;
 
 using ServiceBusMassTransitCqrsDemo.Domain;
 
 using SharedKernel;
 using SharedKernel.Framework;
 using SharedKernel.Framework.Functional;
+using SharedKernel.Framework.Validation;
 
 namespace ServiceBusMassTransitCqrsDemo
 {
@@ -85,10 +90,10 @@ namespace ServiceBusMassTransitCqrsDemo
 
                 if ("exit".Equals(value, StringComparison.OrdinalIgnoreCase))
                     break;
-                Result result = await _mediator.Send(new SendChatMessage(value));
+                Result<Unit, ValidationFailures> result = await _mediator.Send(new SendChatMessage(value));
                 if (result.IsFailure)
                 {
-                    foreach (string errorMessage in result.GetErrorMessages())
+                    foreach (ValidationFailure errorMessage in result.Error.Failures)
                     {
                         Console.WriteLine($"ERROR: {errorMessage}");
                     }

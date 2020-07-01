@@ -6,11 +6,16 @@ using CSharpFunctionalExtensions;
 
 using MassTransit;
 
+using MediatR;
+
 using ServiceBusMassTransitCqrsDemo.Domain;
 
 using SharedKernel;
 using SharedKernel.Events;
 using SharedKernel.Framework;
+using SharedKernel.Framework.Validation;
+
+using Message = ServiceBusMassTransitCqrsDemo.Domain.Chat.DomainEvents.Message;
 
 namespace ServiceBusMassTransitCqrsDemo.CommandHandlers
 {
@@ -27,13 +32,12 @@ namespace ServiceBusMassTransitCqrsDemo.CommandHandlers
             _currentUser = new User("nils@appsum.com");
         }
 
-        public async Task<Result> Handle(SendChatMessage request, CancellationToken cancellationToken)
+        public async Task<Result<Unit, ValidationFailures>> Handle(SendChatMessage request, CancellationToken cancellationToken)
         {
             ISendEndpoint sendEndpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri($"{MassTransitConfig.HostUrl}/{MassTransitConfig.EndPoint}"));
             // await sendEndpoint.Send(new ChatMessage("Nils", value));
-            var chatMessage = new ChatMessage(_currentUser, request.Message);
-            await _bus.Publish(new ChatMessageSent(chatMessage.User.Id, chatMessage.Message, chatMessage.Created), cancellationToken);
-            return Result.Success();
+            _currentUser.SendChatMessage(new Message(request.Message));
+            return Result.Success<Unit, ValidationFailures>(Unit.Value);
         }
     }
 }

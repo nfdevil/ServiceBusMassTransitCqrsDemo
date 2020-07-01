@@ -8,7 +8,9 @@ using CSharpFunctionalExtensions;
 
 using MediatR;
 
+using SharedKernel.Framework.Validation;
+
 namespace SharedKernel.Framework
 {
-    public interface ICommand : IRequest<Result> { }
+    public interface ICommand : IRequest<Result<Unit, ValidationFailures>> { }
 }

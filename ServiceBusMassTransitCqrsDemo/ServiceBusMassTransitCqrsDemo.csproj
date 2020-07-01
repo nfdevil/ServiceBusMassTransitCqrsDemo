@@ -6,12 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
     <PackageReference Include="MassTransit.Quartz" Version="6.3.2" />
     <PackageReference Include="MassTransit.SerilogIntegration" Version="5.5.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SharedKernel\SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

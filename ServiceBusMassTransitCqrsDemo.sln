@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusMassTransitCqrsDemo", "ServiceBusMassTransitCqrsDemo\ServiceBusMassTransitCqrsDemo.csproj", "{340B255A-1424-4A4E-95FF-6B503405EBB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusMassTransitCqrsDemo", "ServiceBusMassTransitCqrsDemo\ServiceBusMassTransitCqrsDemo.csproj", "{340B255A-1424-4A4E-95FF-6B503405EBB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusConsumer1", "ServiceBusConsumer1\ServiceBusConsumer1.csproj", "{0CA8185A-B0FA-4EEA-B519-953668B0A676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusConsumer1", "ServiceBusConsumer1\ServiceBusConsumer1.csproj", "{0CA8185A-B0FA-4EEA-B519-953668B0A676}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusConsumer2", "ServiceBusConsumer2\ServiceBusConsumer2.csproj", "{FCD81AD4-9811-4E0F-B048-58A1EA315364}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusConsumer2", "ServiceBusConsumer2\ServiceBusConsumer2.csproj", "{FCD81AD4-9811-4E0F-B048-58A1EA315364}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{000780C8-F2EE-4B05-802B-CD02EB4FA0B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{000780C8-F2EE-4B05-802B-CD02EB4FA0B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel.Tests", "SharedKernel.Tests\SharedKernel.Tests.csproj", "{DAEFE3DB-2AD9-4D8B-9810-E5E8AB5B65E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBusDemo.Api", "ServiceBusDemo.Api\ServiceBusDemo.Api.csproj", "{9E6F03EC-240B-4E67-B073-D2EFE172BFCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{000780C8-F2EE-4B05-802B-CD02EB4FA0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{000780C8-F2EE-4B05-802B-CD02EB4FA0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{000780C8-F2EE-4B05-802B-CD02EB4FA0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAEFE3DB-2AD9-4D8B-9810-E5E8AB5B65E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAEFE3DB-2AD9-4D8B-9810-E5E8AB5B65E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAEFE3DB-2AD9-4D8B-9810-E5E8AB5B65E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAEFE3DB-2AD9-4D8B-9810-E5E8AB5B65E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6F03EC-240B-4E67-B073-D2EFE172BFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6F03EC-240B-4E67-B073-D2EFE172BFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6F03EC-240B-4E67-B073-D2EFE172BFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6F03EC-240B-4E67-B073-D2EFE172BFCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

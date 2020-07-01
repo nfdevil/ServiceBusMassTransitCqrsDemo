@@ -14,7 +14,7 @@ using SharedKernel.Framework.Functional;
 
 namespace SharedKernel.Framework.Validation
 {
-    public class ValidatorPipelineBehavior<TRequest> : IPipelineBehavior<TRequest, Result>
+    public class ValidatorPipelineBehavior<TRequest> : IPipelineBehavior<TRequest, Result<Unit, ValidationFailures>>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
@@ -23,15 +23,14 @@ namespace SharedKernel.Framework.Validation
             _validators = validators;
         }
 
-        public Task<Result> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<Result> next)
+        public Task<Result<Unit, ValidationFailures>> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<Result<Unit, ValidationFailures>> next)
         {
             List<ValidationFailure> failures = _validators
                                                .Select(validator => validator.Validate(request))
                                                .SelectMany(result => result.Errors)
                                                .Where(error => error != null)
                                                .ToList();
-
-            return failures.Any() ? Task.FromResult(failures.ToResult()) : next();
+            return failures.Any() ? Task.FromResult(Result.Failure<Unit, ValidationFailures>(new ValidationFailures(failures))) : next();
         }
     }
 }
