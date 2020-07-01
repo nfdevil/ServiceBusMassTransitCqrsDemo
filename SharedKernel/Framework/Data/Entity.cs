@@ -7,9 +7,6 @@ namespace SharedKernel.Framework.Data
 {
     public abstract class Entity
     {
-        private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
-        public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents;
-
         public Guid Id { get; }
 
         
@@ -23,16 +20,6 @@ namespace SharedKernel.Framework.Data
                 throw new ArgumentException($"The {nameof(id)} must be set.");
             }
             Id = id;
-        }
-
-        protected void RaiseDomainEvent(IDomainEvent domainEvent)
-        {
-            _domainEvents.Add(domainEvent);
-        }
-
-        public void ClearDomainEvents()
-        {
-            _domainEvents.Clear();
         }
 
         public override bool Equals(object obj)

@@ -2,6 +2,8 @@
 
 using JetBrains.Annotations;
 
+using ServiceBusMassTransitCqrsDemo.Domain.Chat;
+
 using SharedKernel.Events;
 using SharedKernel.Framework.Data;
 
@@ -14,12 +16,14 @@ namespace ServiceBusMassTransitCqrsDemo.Domain
         [UsedImplicitly]
         private ChatMessage() { }
 
-        public ChatMessage(Guid id, Message message) : base(id)
+        public ChatMessage(Guid id, User user, Message message) : base(id)
         {
+            User = user;
             Message = message;
             Created = DateTime.UtcNow;
         }
 
+        public User User { get; }
         public Message Message { get; }
         public DateTime Created { get; }
     }

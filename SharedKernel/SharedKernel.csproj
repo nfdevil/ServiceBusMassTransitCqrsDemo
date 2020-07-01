@@ -23,4 +23,8 @@
     <PackageReference Include="Serilog" Version="2.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Framework\MessageBus\" />
+  </ItemGroup>
+
 </Project>

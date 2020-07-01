@@ -9,6 +9,7 @@ using MassTransit;
 using MediatR;
 
 using ServiceBusMassTransitCqrsDemo.Domain;
+using ServiceBusMassTransitCqrsDemo.Domain.Chat;
 
 using SharedKernel;
 using SharedKernel.Events;
